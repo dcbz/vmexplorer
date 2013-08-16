@@ -15,7 +15,7 @@ class strings:
 	def dispatch(self,request,filename):
 		htmlcode = "<html><head><title>STRINGS Plugin - pid %s.</title></head>" % request.GET["pid"]
 		htmlcode += "<body><pre>"
-		htmlcode += subprocess.check_output([STRINGSPATH, filename])
+		htmlcode += subprocess.check_output([STRINGSPATH, "-", filename])
 		htmlcode += "</pre></body></html>"
 		os.unlink(filename)
 		return HttpResponse(htmlcode)
