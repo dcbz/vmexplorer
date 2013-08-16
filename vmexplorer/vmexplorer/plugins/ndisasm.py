@@ -15,7 +15,7 @@ class ndisasm:
 	def dispatch(self,request,filename):
 		htmlcode = "<html><head><title>NDISASM Plugin - pid %s.</title></head>" % request.GET["pid"]
 		htmlcode += "<body><pre>"
-		htmlcode += subprocess.check_output([NDISASMPATH,"-u",filename])
+		htmlcode += subprocess.check_output([NDISASMPATH,"-b64",filename])
 		htmlcode += "</pre></body></html>"
 		os.unlink(filename)
 		return HttpResponse(htmlcode)
